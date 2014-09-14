@@ -1,0 +1,28 @@
+{
+	"name": "form-manager/bootstrap",
+	"type": "library",
+	"description": "FormManager extension to create bootstrap like forms",
+	"keywords": ["form", "html", "bootstrap"],
+	"homepage": "https://github.com/oscarotero/form-manager-bootstrap",
+	"license": "AGPL-3.0",
+	"authors": [
+		{
+			"name": "Oscar Otero",
+			"email": "oom@oscarotero.com",
+			"homepage": "http://oscarotero.com",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"email": "oom@oscarotero.com",
+		"issues": "https://github.com/oscarotero/form-manager-bootstrap/issues"
+	},
+	"require": {
+		"form-manager/form-manager": ">=3.8"
+	},
+	"autoload": {
+		"psr-4": {
+			"FormManager\\": "src"
+		}
+	}
+}
