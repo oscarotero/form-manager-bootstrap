@@ -99,9 +99,9 @@ class Bootstrap
     }
 
     /**
-	 * Generates a basic control-group
-	 *
-	 * <div class="form-group">
+     * Generates a basic control-group
+     *
+     * <div class="form-group">
      *     <label class="control-label"></label>
      *     <input class="form-control">
      * </div>
@@ -134,9 +134,9 @@ class Bootstrap
     }
 
     /**
-	 * Generates a checkbox control-group
-	 *
-	 * <div class="checkbox">
+     * Generates a checkbox control-group
+     *
+     * <div class="checkbox">
      *     <label><input> </label>
      * </div>
      *
@@ -159,8 +159,8 @@ class Bootstrap
     }
 
     /**
-	 * Generates a button control-group
-	 *
+     * Generates a button control-group
+     *
      * <div class="form-group">
      *     <input class="btn">
      * </div>
