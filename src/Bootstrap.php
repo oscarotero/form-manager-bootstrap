@@ -17,7 +17,11 @@ class Bootstrap
     {
         $field = Field::__callStatic($name, $arguments);
 
-        return $field->render(__CLASS__.'::'.self::getTemplate($field));
+        if (($template = self::getTemplate($field))) {
+            $field->render(__CLASS__.'::'.$template);
+        }
+
+        return $field;
     }
 
     /**
@@ -67,11 +71,13 @@ class Bootstrap
      *
      * @param Field $field
      *
-     * @return string
+     * @return string|false
      */
     public static function getTemplate($field)
     {
-        $input = $field->input;
+        if (!($input = $field->input)) {
+            return false;
+        }
 
         switch ($input->getElementName()) {
             case 'textarea':
