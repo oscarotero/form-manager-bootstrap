@@ -1,7 +1,8 @@
 <?php
 namespace FormManager;
 
-use FormManager\Fields\Field;
+use FormManager\Builder;
+use FormManager\Elements\Element;
 
 class Bootstrap
 {
@@ -15,7 +16,7 @@ class Bootstrap
      */
     public static function __callStatic($name, $arguments)
     {
-        $field = Field::__callStatic($name, $arguments);
+        $field = Builder::__callStatic($name, $arguments);
 
         if (($template = self::getTemplate($field))) {
             $field->render(__CLASS__.'::'.$template);
@@ -33,7 +34,7 @@ class Bootstrap
      */
     public static function form(array $fields = null)
     {
-        $form = new Form();
+        $form = Builder::Form();
 
         if ($fields) {
             $form->add($fields);

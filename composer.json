@@ -18,7 +18,7 @@
 		"issues": "https://github.com/oscarotero/form-manager-bootstrap/issues"
 	},
 	"require": {
-		"form-manager/form-manager": ">=3.8.2"
+		"form-manager/form-manager": ">=4.3.5"
 	},
 	"autoload": {
 		"psr-4": {
