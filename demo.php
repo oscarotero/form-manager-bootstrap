@@ -16,6 +16,17 @@ $form = Bootstrap::form([
 		1 => 'Laura',
 		2 => 'Oscar'
 	]),
+	'date' =>	Bootstrap::group([
+		'day' => Bootstrap::number()->min(1)->max(31)->label('Day'),
+		'month' => Bootstrap::number()->min(1)->max(12)->label('Month'),
+		'year' => Bootstrap::number()->min(1900)->max(2013)->label('Year')
+	])->set([
+		'columnSizing' => [
+			'day' => 'col-sm-4 col-md-3', 
+			'month' => 'col-sm-4 col-md-3', 
+			'year' => 'col-sm-4 col-md-3'
+		]
+	]),
 	'reset' => Bootstrap::submit()->val('ola')->html('ola'),
 	'submit' => Bootstrap::submit()->html('Send')
 ]);
