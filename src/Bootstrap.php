@@ -76,6 +76,10 @@ class Bootstrap
      */
     public static function getTemplate($field)
     {
+        if ($field instanceof Containers\Group) {
+            return 'formColumnSizingTemplate';
+        }
+
         if (!($input = $field->input)) {
             return false;
         }
@@ -103,6 +107,42 @@ class Bootstrap
                         return 'formGroupTemplate';
                 }
         }
+    }
+
+    /**
+     * Generates a column sized form group
+     *
+     * <div class="row">
+     *     <div class="col-sm-2">...</div>
+     * </div>
+     *
+     * @param Group $group
+     *
+     * @return string
+     */
+    public static function formColumnSizingTemplate($group)
+    {
+        $html = '';
+        if ($columnSizing = $group->get('columnSizing')) {
+            $group->rewind();
+            
+            while ($field = $group->current()) {
+                $key = $group->key();
+                $class = $columnSizing[$key];
+                $element = Element::div(true);
+                if ($class) {
+                    $element->addClass($class);
+                }
+                $html .= $element->toHtml($field->toHtml());
+                $group->next();
+            }
+
+            $html = Element::div(true)->addClass('row')->toHtml($html);            
+        }
+        else {
+            $html = $group->html();
+        }
+        return $html;
     }
 
     /**
