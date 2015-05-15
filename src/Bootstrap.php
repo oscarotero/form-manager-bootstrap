@@ -80,32 +80,34 @@ class Bootstrap
             return 'formColumnSizingTemplate';
         }
 
-        if (!($input = $field->input)) {
+        if ($field instanceof Containers) {
             return false;
         }
 
-        switch ($input->getElementName()) {
-            case 'textarea':
-            case 'select':
-                return 'formGroupTemplate';
+        if ($field instanceof Fields\Field) {
+            switch ($field->input->getElementName()) {
+                case 'textarea':
+                case 'select':
+                    return 'formGroupTemplate';
 
-            case 'button':
-                return 'buttonTemplate';
+                case 'button':
+                    return 'buttonTemplate';
 
-            case 'input':
-                switch ($input->attr('type')) {
-                    case 'checkbox':
-                    case 'radio':
-                        return 'radioCheckboxTemplate';
+                case 'input':
+                    switch ($field->input->attr('type')) {
+                        case 'checkbox':
+                        case 'radio':
+                            return 'radioCheckboxTemplate';
 
-                    case 'submit':
-                    case 'reset':
-                    case 'button':
-                        return 'buttonTemplate';
+                        case 'submit':
+                        case 'reset':
+                        case 'button':
+                            return 'buttonTemplate';
 
-                    default:
-                        return 'formGroupTemplate';
-                }
+                        default:
+                            return 'formGroupTemplate';
+                    }
+            }
         }
     }
 
@@ -317,9 +319,6 @@ class Bootstrap
         if ($field->error()) {
             $field->errorLabel->addClass('text-danger');
         }
-
-        //Generates random id if not defined
-        $field->input->id();
 
         $html = $field->input->toHtml();
         $html = $field->label->toHtml($html.' ').$field->errorLabel;

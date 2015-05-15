@@ -27,6 +27,11 @@ $form = Bootstrap::form([
 			'year' => 'col-sm-4 col-md-3'
 		]
 	]),
+	'colors' => Bootstrap::choose([
+		'red' => Bootstrap::radio()->label('Red'),
+		'blue' => Bootstrap::radio()->label('Blue'),
+		'green' => Bootstrap::radio()->label('Green')
+	]),
 	'reset' => Bootstrap::submit()->val('ola')->html('ola'),
 	'submit' => Bootstrap::submit()->html('Send')
 ]);
@@ -36,8 +41,8 @@ $form = Bootstrap::form([
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 
 <body>
