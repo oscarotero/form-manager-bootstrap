@@ -104,6 +104,9 @@ class Bootstrap
                         case 'button':
                             return 'buttonTemplate';
 
+                        case 'hidden':
+                            return 'hiddenTemplate';
+
                         default:
                             return 'formGroupTemplate';
                     }
@@ -330,5 +333,19 @@ class Bootstrap
         }
 
         return $html;
+    }
+
+    /**
+     * Generates a hidden field
+     *
+     * <input type="hidden">
+     *
+     * @param Field $field
+     *
+     * @return string
+     */
+    public static function hiddenTemplate($field)
+    {
+        return $field->input->toHtml();
     }
 }
