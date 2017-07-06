@@ -19,7 +19,7 @@ class Bootstrap
         $field = Builder::__callStatic($name, $arguments);
 
         if (($template = static::getTemplate($field))) {
-            $field->render(__CLASS__.'::'.$template);
+            $field->render(get_called_class().'::'.$template);
         }
 
         return $field;
