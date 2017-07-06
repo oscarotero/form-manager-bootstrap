@@ -18,8 +18,8 @@ class Bootstrap
     {
         $field = Builder::__callStatic($name, $arguments);
 
-        if (($template = self::getTemplate($field))) {
-            $field->render(__CLASS__.'::'.$template);
+        if (($template = static::getTemplate($field))) {
+            $field->render(get_called_class().'::'.$template);
         }
 
         return $field;
@@ -52,7 +52,7 @@ class Bootstrap
      */
     public static function formHorizontal(array $fields = null)
     {
-        return self::form($fields)->addClass('form-horizontal');
+        return static::form($fields)->addClass('form-horizontal');
     }
 
     /**
@@ -64,7 +64,7 @@ class Bootstrap
      */
     public static function formInline(array $fields = null)
     {
-        return self::form($fields)->addClass('form-inline');
+        return static::form($fields)->addClass('form-inline');
     }
 
     /**
@@ -174,7 +174,7 @@ class Bootstrap
 
         $field->input->addClass('form-control');
 
-        $html = self::getInputHtml($field);
+        $html = static::getInputHtml($field);
 
         //Horizontal form
         if ($form->hasClass('form-horizontal')) {
@@ -182,7 +182,7 @@ class Bootstrap
             $html = Element::div(true)->addClass('col-sm-10')->toHtml($html);
         }
 
-        return self::getFormGroupHtml($field, $field->label.$html);
+        return static::getFormGroupHtml($field, $field->label.$html);
     }
 
     /**
@@ -200,14 +200,14 @@ class Bootstrap
     {
         $form = $field->input->getForm();
 
-        $html = self::getRadioCheckHtml($field);
+        $html = static::getRadioCheckHtml($field);
 
         //Horizontal form
         if ($form->hasClass('form-horizontal')) {
             $html = Element::div(true)->addClass('col-sm-offset-2 col-sm-10')->toHtml($html);
         }
 
-        return self::getFormGroupHtml($field, $html);
+        return static::getFormGroupHtml($field, $html);
     }
 
     /**
@@ -232,7 +232,7 @@ class Bootstrap
             $html = Element::div(true)->addClass('col-sm-offset-2 col-sm-10')->toHtml($html);
         }
 
-        return self::getFormGroupHtml($field, $html);
+        return static::getFormGroupHtml($field, $html);
     }
 
     /**
@@ -243,7 +243,7 @@ class Bootstrap
      *
      * @return string
      */
-    private static function getFormGroupHtml($field, $html)
+    protected static function getFormGroupHtml($field, $html)
     {
         $group = Element::div(true)->class('form-group');
 
@@ -275,7 +275,7 @@ class Bootstrap
      *
      * @return string
      */
-    private static function getInputHtml($field)
+    protected static function getInputHtml($field)
     {
         $html = $field->input->toHtml();
 
@@ -316,7 +316,7 @@ class Bootstrap
      *
      * @return string
      */
-    private static function getRadioCheckHtml($field)
+    protected static function getRadioCheckHtml($field)
     {
         //Errors
         if ($field->error()) {
